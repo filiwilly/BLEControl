@@ -36,9 +36,9 @@ public class Voz extends Principal {
         setContentView(R.layout.actividad_voz);
         getSupportActionBar().setTitle(R.string.tt_voz);
 
-        tv_texto = (TextView) findViewById(R.id.tv_texto);
-        enviar = (Button) findViewById(R.id.enviar);
-        microfono = (ImageButton) findViewById(R.id.ic_mic);
+        tv_texto = findViewById(R.id.tv_texto);
+        enviar = findViewById(R.id.enviar);
+        microfono = findViewById(R.id.ic_mic);
 
         Intent intent = getIntent();
         mDirecDispo = intent.getStringExtra("direccion");
@@ -52,7 +52,7 @@ public class Voz extends Principal {
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (lectura != null && conectado==true) {
+                if (lectura != null && conectado) {
                     int tam = lectura.get(0).length();
                     byte[] bytes = lectura.get(0).getBytes();
                     int paquetetam = (int) Math.ceil( bytes.length / (double)19);
@@ -62,7 +62,8 @@ public class Voz extends Principal {
                         if(y>bytes.length){ y=bytes.length;}
                         byte [] dividido = Arrays.copyOfRange(bytes,x,y);
                         String valor = new String(dividido);
-                        mBluetoothLeService.WriteValue("3"+valor);
+                        if(i==0) {mBluetoothLeService.WriteValue("3"+valor);}
+                        else{mBluetoothLeService.WriteValue(valor);}
                         try {
                             Thread.sleep(200);
                         } catch (InterruptedException e) {
