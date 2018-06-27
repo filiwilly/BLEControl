@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondoprincipal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingBottom="25dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="25dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/redondo"
+                android:elevation="2dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true">
+
+                        <ImageButton
+                            android:id="@+id/ic_rrr"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_centerInParent="true"
+                            android:background="@drawable/ic_rrr" />
+                        <View
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent" />
+                        <ImageButton
+                            android:id="@+id/ic_rr"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_toEndOf="@+id/ic_rrr"
+                            android:background="@drawable/ic_rr" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <ImageButton
+                    android:id="@+id/ic_plpa"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:onClick="PLPA"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/ic_plpa" />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true">
+                        <ImageButton
+                            android:id="@+id/ic_ff"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_centerInParent="true"
+                            android:background="@drawable/ic_ff" />
+                        <View
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent" />
+                        <ImageButton
+                            android:id="@+id/ic_fff"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_toEndOf="@+id/ic_rrr"
+                            android:background="@drawable/ic_fff" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingBottom="25dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="25dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rectangulo"
+                android:elevation="2dp">
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

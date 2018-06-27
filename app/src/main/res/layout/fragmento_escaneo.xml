@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="1000dp"
+    android:minHeight="450dp"
+    android:padding="50dp">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:elevation="6dp"
+        android:src="@drawable/ic_lupa" />
+
+    <RelativeLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@color/fondoapp">
+
+        <ListView
+            android:id="@+id/lista"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="0.5dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
+            android:layout_marginBottom="38dp"/>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_below="@+id/lista"
+            android:layout_marginTop="-36dp"
+            android:background="@color/grismedio" />
+
+            <Button
+                android:id="@+id/b_escaneo"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/boton_accent"
+                android:text="@string/bt_escanear"
+                android:textColor="@color/secondaryTextColor"
+                android:textStyle="bold" />
+        </RelativeLayout>
+</RelativeLayout>

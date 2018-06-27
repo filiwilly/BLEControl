@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">BLEcontrol</string>
+    <!-- Comprobaciones -->
+    <string name="usuario">Ningún dispositivo conectado</string>
+    <string name="noble">Bluetooth 4.0 no soportado</string>
+    <string name="noconectado">Conéctese a un dispositivo antes</string>
+    <!-- Comprobaciones -->
+    <string name="tt_voz">Dictado por voz</string>
+    <string name="tt_gamepad">Gamepad</string>
+    <string name="tt_multimedia">Control Multimedia</string>
+    <!-- Fragment Escanear -->
+    <string name="escanear">Escanear</string>
+    <string name="noescanear">Parar</string>
+    <string name="bt_escanear">Parar</string>
+    <!-- Clase Principal - Iconos -->
+    <string name="tv_gamepad">Gamepad</string>
+    <string name="tv_multimedia">Multimedia</string>
+    <string name="tv_voz">Voz</string>
+    <string name="tv_teclado">Teclado y Ratón</string>
+    <!-- Clase Adaptardor_dispositivo -->
+    <string name="desc">Dispositivo Desconocido</string>
+    <!-- Clase Voz -->
+    <string name="enviar">Enviar</string>
+</resources>

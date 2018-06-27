@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondoprincipal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingBottom="20dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                android:elevation="2dp">
+                <ImageButton
+                    android:id="@+id/ic_mic"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/ic_mic" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingBottom="25dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp">
+            <ScrollView
+                android:id="@+id/sv_texto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rectangulo"
+                android:elevation="2dp"
+                android:fillViewport="true"
+                android:padding="10dp"
+                android:scrollbars="vertical">
+                <TextView
+                    android:id="@+id/tv_texto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:textColor="@color/primaryDarkColor"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </ScrollView>
+            <Button
+                android:id="@+id/enviar"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_alignBottom="@+id/sv_texto"
+                android:layout_alignEnd="@+id/sv_texto"
+                android:background="@drawable/boton_accent"
+                android:text="@string/enviar"
+                android:textColor="@color/secondaryTextColor"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
