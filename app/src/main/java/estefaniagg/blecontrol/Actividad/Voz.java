@@ -62,10 +62,9 @@ public class Voz extends Principal {
                         if(y>bytes.length){ y=bytes.length;}
                         byte [] dividido = Arrays.copyOfRange(bytes,x,y);
                         String valor = new String(dividido);
-                        if(i==0) {mBluetoothLeService.WriteValue("3"+valor);}
-                        else{mBluetoothLeService.WriteValue(valor);}
+                        mBluetoothLeService.WriteValue("3"+valor);
                         try {
-                            Thread.sleep(200);
+                            Thread.sleep(300);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }

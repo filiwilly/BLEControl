@@ -173,7 +173,9 @@ public class Principal extends AppCompatActivity {
 
     public void teclado(View view) {
         if (conectado) {
-
+            Intent intent = new Intent(this, Voz.class);
+            intent.putExtra("direccion", mDirecDispo);
+            startActivityForResult(intent, 5);
         } else {
             Snackbar.make(view, R.string.noconectado, Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
@@ -264,6 +266,7 @@ public class Principal extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.desconexion:
                 mBluetoothLeService.disconnect();
+                invalidateOptionsMenu();
                 return true;
             case R.id.conexion:
                 tvDispo.setText("Conectando...");
