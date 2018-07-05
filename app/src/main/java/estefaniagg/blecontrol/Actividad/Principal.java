@@ -173,7 +173,7 @@ public class Principal extends AppCompatActivity {
 
     public void teclado(View view) {
         if (conectado) {
-            Intent intent = new Intent(this, Voz.class);
+            Intent intent = new Intent(this, Teclado.class);
             intent.putExtra("direccion", mDirecDispo);
             startActivityForResult(intent, 5);
         } else {
@@ -309,7 +309,7 @@ public class Principal extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.d(TAG,"OnStop");
-        if(destruir==true){
+        if(destruir){
             invalidateOptionsMenu();
         }
     }

@@ -8,6 +8,7 @@
     <string name="tt_voz">Dictado por voz</string>
     <string name="tt_gamepad">Gamepad</string>
     <string name="tt_multimedia">Control Multimedia</string>
+    <string name="tt_teclado">Teclado y Ratón</string>
     <!-- Fragment Escanear -->
     <string name="escanear">Escanear</string>
     <string name="noescanear">Parar</string>
