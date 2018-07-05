@@ -7,6 +7,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import estefaniagg.blecontrol.Data.Teclas;
 import estefaniagg.blecontrol.R;
 
 public class Teclado extends Principal {
@@ -27,11 +28,9 @@ public class Teclado extends Principal {
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         Log.i("key pressed", String.valueOf(event.getKeyCode()));
-        char unicodeChar = (char)event.getUnicodeChar();
-        event.getKeyCharacterMap();
-        Log.i("unicode:", String.valueOf(unicodeChar));
-        if (event.getKeyCode()!=16 && conectado){
-            mBluetoothLeService.WriteValue("4"+String.valueOf(event.getKeyCode()));
+        int codigo= Teclas.getTeclaid(event.getKeyCode());
+        if (conectado) {
+            mBluetoothLeService.WriteValue("4" + String.valueOf(codigo));
         }
         return super.onKeyUp(keyCode, event);
     }
