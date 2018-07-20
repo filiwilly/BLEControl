@@ -3,6 +3,7 @@ package estefaniagg.blecontrol.Data;
 public class Teclas {
     public static int getTeclaid(int codigo){
         int cod = 0;
+        //TODO: acabar teclado de símbolos
         switch (codigo) {
             //Símbolos
             case 62: cod = 32; break; //espacio

@@ -8,12 +8,44 @@
     <Button
         android:id="@+id/teclado"
         android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_marginTop="20dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/boton_accent"
         android:text="Teclado"
+        android:onClick="abrirteclado"
         android:textColor="@color/secondaryTextColor"
         android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/clickizq"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/boton_accent"
+            android:onClick="abrirteclado"
+            android:text="Click izq"
+            android:textColor="@color/secondaryTextColor"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/clickder"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/boton_accent"
+            android:onClick="abrirteclado"
+            android:text="Click dch"
+            android:textColor="@color/secondaryTextColor"
+            android:textStyle="bold" />
+    </LinearLayout>
 </RelativeLayout>

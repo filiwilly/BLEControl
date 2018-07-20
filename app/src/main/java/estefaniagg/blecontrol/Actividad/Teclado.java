@@ -1,16 +1,25 @@
 package estefaniagg.blecontrol.Actividad;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.VelocityTrackerCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.VelocityTracker;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import estefaniagg.blecontrol.Data.Teclas;
 import estefaniagg.blecontrol.R;
 
 public class Teclado extends Principal {
+    private static final String DEBUG_TAG = "Velocidad";
+    private VelocityTracker mVelocityTracker = null;
+    boolean teclado = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +44,18 @@ public class Teclado extends Principal {
         return super.onKeyUp(keyCode, event);
     }
 
-    /*public void showSoftKeyboard(View view) {
-    if (view.requestFocus()) {
-        InputMethodManager imm = (InputMethodManager)
-                getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+    public void abrirteclado (View view){
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (teclado == false) {
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+            teclado=true;
+        } else {
+            imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+            teclado=false;
+        }
     }
-}*/
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -27,6 +27,6 @@
         <activity android:name=".Actividad.Voz" android:screenOrientation="landscape" android:configChanges="orientation|screenSize"></activity>
         <activity android:name=".Actividad.Gamepad" android:screenOrientation="landscape" android:configChanges="orientation|screenSize"></activity>
         <activity android:name=".Actividad.Multimedia" android:screenOrientation="landscape" android:configChanges="orientation|screenSize"></activity>
-        <activity android:name=".Actividad.Teclado" android:screenOrientation="landscape" android:configChanges="orientation|screenSize" android:windowSoftInputMode="stateVisible"></activity>
+        <activity android:name=".Actividad.Teclado" android:screenOrientation="landscape" android:configChanges="orientation|screenSize" android:windowSoftInputMode="stateAlwaysHidden"></activity>
     </application>
 </manifest>
