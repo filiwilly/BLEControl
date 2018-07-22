@@ -5,47 +5,87 @@
     android:orientation="vertical"
     android:background="@color/fondoprincipal">
 
-    <Button
-        android:id="@+id/teclado"
-        android:layout_width="150dp"
+    <RelativeLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+        <Button
+            android:id="@+id/teclado"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/boton_accent"
+            android:text="Teclado"
+            android:onClick="abrirteclado"
+            android:textColor="@color/secondaryTextColor"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/l2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/l3"
+        android:layout_below="@+id/l1"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/grisclaro">
+        <RelativeLayout
+            android:id="@+id/R1"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true">
+            <ImageButton
+                android:id="@+id/bup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_arriba"
+                android:onClick="arriba" />
+            <ImageButton
+                android:id="@+id/bdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_abajo"
+                android:layout_alignParentBottom="true"
+                android:onClick="abajo"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/l3"
+        android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/boton_accent"
-        android:text="Teclado"
-        android:onClick="abrirteclado"
-        android:textColor="@color/secondaryTextColor"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true">
+            <Button
+                android:id="@+id/clickizq"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:background="@drawable/boton_accent"
+                android:onClick="clickizq"
+                android:text="Click izq"
+                android:textColor="@color/secondaryTextColor"
+                android:textStyle="bold" />
+            <Button
+                android:id="@+id/clickder"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/boton_accent"
+                android:onClick="clickder"
+                android:text="Click dch"
+                android:textColor="@color/secondaryTextColor"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </RelativeLayout>
 
-        <Button
-            android:id="@+id/clickizq"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/boton_accent"
-            android:onClick="abrirteclado"
-            android:text="Click izq"
-            android:textColor="@color/secondaryTextColor"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/clickder"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/boton_accent"
-            android:onClick="abrirteclado"
-            android:text="Click dch"
-            android:textColor="@color/secondaryTextColor"
-            android:textStyle="bold" />
-    </LinearLayout>
 </RelativeLayout>
