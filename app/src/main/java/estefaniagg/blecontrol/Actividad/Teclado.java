@@ -19,7 +19,6 @@ import static android.content.ContentValues.TAG;
 
 public class Teclado extends Principal {
     boolean teclado = false;
-    RelativeLayout Area;
     float x1, x2;
     float y1, y2;
     float distx = 0, disty = 0;
@@ -30,7 +29,8 @@ public class Teclado extends Principal {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actividad_teclado);
         getSupportActionBar().setTitle(R.string.tt_teclado);
-        Area = (RelativeLayout) findViewById(R.id.l2);
+        RelativeLayout Area = (RelativeLayout) findViewById(R.id.l2);
+        //TODO: modo dibujo
         //TOUCHPAD
         Area.setOnTouchListener(new View.OnTouchListener() {
             @Override

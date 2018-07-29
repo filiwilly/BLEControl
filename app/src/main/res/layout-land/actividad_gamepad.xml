@@ -125,6 +125,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/imageView4"
             android:layout_alignTop="@+id/imageView4"
+            android:onClick="stpressed"
             android:background="@android:color/transparent"></Button>
 
     </RelativeLayout>
