@@ -1,7 +1,9 @@
 package estefaniagg.blecontrol.Actividad;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -10,7 +12,10 @@ import android.widget.Button;
 
 import estefaniagg.blecontrol.R;
 
+import static android.content.ContentValues.TAG;
+
 public class Gamepad extends Principal {
+    @SuppressLint("ClickableViewAccessibility")
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actividad_gamepad);
@@ -29,15 +34,19 @@ public class Gamepad extends Principal {
         Button m3 = (Button) this.findViewById(R.id.bmid3);
         Button m4 = (Button) this.findViewById(R.id.bmid4);
         //Acciones de los botones de dirección:
-        //TODO: Cambiar códigos numericos por teclas
         m1.setOnTouchListener(new View.OnTouchListener() { //Arriba-Izquierda
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"14");
+                    mBluetoothLeService.WriteValue("2"+"15"+"LU");
+                    try {
+                        Thread.sleep(150);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"15");
+                    mBluetoothLeService.WriteValue("2"+"16"+"LU");
                 }
                 return false;
             }
@@ -47,10 +56,15 @@ public class Gamepad extends Principal {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"16");
+                    mBluetoothLeService.WriteValue("2"+"17"+"RU");
+                    try {
+                        Thread.sleep(150);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"17");
+                    mBluetoothLeService.WriteValue("2"+"18"+"RU");
                 }
                 return false;
             }
@@ -59,10 +73,15 @@ public class Gamepad extends Principal {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"18");
+                    mBluetoothLeService.WriteValue("2"+"19"+"LD");
+                    try {
+                        Thread.sleep(150);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"19");
+                    mBluetoothLeService.WriteValue("2"+"20"+"LD");
                 }
                 return false;
             }
@@ -71,10 +90,15 @@ public class Gamepad extends Principal {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"20");
+                    mBluetoothLeService.WriteValue("2"+"21"+"RD");
+                    try {
+                        Thread.sleep(150);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"21");
+                    mBluetoothLeService.WriteValue("2"+"22"+"RD");
                 }
                 return false;
             }
@@ -84,10 +108,15 @@ public class Gamepad extends Principal {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"3");
+                    mBluetoothLeService.WriteValue("2"+"13"+"KEY_DOWN_ARROW");
+                    try {
+                        Thread.sleep(150);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"4");
+                    mBluetoothLeService.WriteValue("2"+"14"+"KEY_DOWN_ARROW");
                 }
                 return false;
             }
@@ -97,10 +126,15 @@ public class Gamepad extends Principal {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"7");
+                    mBluetoothLeService.WriteValue("2"+"13"+"KEY_RIGHT_ARROW");
+                    try {
+                        Thread.sleep(150);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"8");
+                    mBluetoothLeService.WriteValue("2"+"14"+"KEY_RIGHT_ARROW");
                 }
                 return false;
             }
@@ -109,10 +143,15 @@ public class Gamepad extends Principal {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"5");
+                    mBluetoothLeService.WriteValue("2"+"13"+"KEY_LEFT_ARROW");
+                    try {
+                        Thread.sleep(150);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"6");
+                    mBluetoothLeService.WriteValue("2"+"14"+"KEY_LEFT_ARROW");
                 }
                 return false;
             }
@@ -121,10 +160,15 @@ public class Gamepad extends Principal {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"1");
+                    mBluetoothLeService.WriteValue("2"+"13"+"KEY_UP_ARROW");
+                    try {
+                        Thread.sleep(150);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"2");
+                    mBluetoothLeService.WriteValue("2"+"14"+"KEY_UP_ARROW");
                 }
                 return false;
             }
@@ -133,10 +177,15 @@ public class Gamepad extends Principal {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"10");
+                    mBluetoothLeService.WriteValue("2"+"11"+"k");
+                    try {
+                        Thread.sleep(75);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"12");
+                    mBluetoothLeService.WriteValue("2"+"12"+"k");
                 }
                 return false;
             }
@@ -144,11 +193,18 @@ public class Gamepad extends Principal {
         b6.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                Log.d(TAG,"Action"+event.getAction());
                 if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"11");
+                    mBluetoothLeService.WriteValue("2"+"11"+"l");
+                    try {
+                        Thread.sleep(75);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-                if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"13");
+                if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL
+                        || event.getAction()==MotionEvent.ACTION_POINTER_UP){
+                    mBluetoothLeService.WriteValue("2"+"12"+"l");
                 }
                 return false;
             }
@@ -156,7 +212,13 @@ public class Gamepad extends Principal {
     }
 
     public void stpressed (View v){
-        mBluetoothLeService.WriteValue("9");
+        mBluetoothLeService.WriteValue("2"+"13"+"KEY_RETURN");
+        try {
+            Thread.sleep(150);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        mBluetoothLeService.WriteValue("2"+"14"+"KEY_RETURN");
     }
 
     @Override
