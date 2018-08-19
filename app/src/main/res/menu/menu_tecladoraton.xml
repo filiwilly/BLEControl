@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/pizarra"
+        android:title="Pizarra"
+        android:icon="@drawable/pizarra"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/desconexion"
+        android:icon="@drawable/ic_dxn"
+        android:title="Desc"
+        app:showAsAction="always" />
+</menu>

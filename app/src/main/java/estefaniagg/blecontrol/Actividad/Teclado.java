@@ -29,6 +29,7 @@ public class Teclado extends Principal {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actividad_teclado);
         getSupportActionBar().setTitle(R.string.tt_teclado);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         RelativeLayout Area = (RelativeLayout) findViewById(R.id.l2);
         //TODO: modo dibujo
         //TOUCHPAD
@@ -64,6 +65,12 @@ public class Teclado extends Principal {
                 return true;
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
     public void clickizq(View view){

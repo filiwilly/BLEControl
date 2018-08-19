@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/spotify"
+        android:title="Spotify"
+        android:icon="@drawable/spotiicon"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/youtube"
+        android:title="Youtube"
+        android:icon="@drawable/youtube-icon"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/vlc"
+        android:title="Vlc"
+        android:icon="@drawable/vlc-icon"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/desconexion"
+        android:icon="@drawable/ic_dxn"
+        android:title="Desc"
+        app:showAsAction="always" />
+
+</menu>

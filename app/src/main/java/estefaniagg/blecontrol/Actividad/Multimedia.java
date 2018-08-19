@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import estefaniagg.blecontrol.R;
 
@@ -13,17 +14,45 @@ public class Multimedia extends Principal {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actividad_multimedia);
         getSupportActionBar().setTitle(R.string.tt_multimedia);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Button volup = (Button) findViewById(R.id.volup);
+        Button voldown = (Button) findViewById(R.id.voldown);
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
     public void PLPA(View view){
         if(conectado){
-            mBluetoothLeService.WriteValue("33"+"dale al pause");
+            mBluetoothLeService.WriteValue("1"+"13");
+        }
+    }
+    public void masvoz(View view){
+        if(conectado){
+            mBluetoothLeService.WriteValue("1"+"11");
+        }
+    }
+    public void menosvoz(View view){
+        if(conectado){
+            mBluetoothLeService.WriteValue("1"+"12");
+        }
+    }
+    public void siguiente(View view){
+        if(conectado){
+            mBluetoothLeService.WriteValue("1"+"14");
+        }
+    }
+    public void anterior(View view){
+        if(conectado){
+            mBluetoothLeService.WriteValue("1"+"15");
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_actividades, menu);
+        getMenuInflater().inflate(R.menu.menu_multimedia, menu);
         return true;
     }
 

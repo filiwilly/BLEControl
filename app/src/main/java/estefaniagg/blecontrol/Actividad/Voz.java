@@ -35,7 +35,7 @@ public class Voz extends Principal {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actividad_voz);
         getSupportActionBar().setTitle(R.string.tt_voz);
-
+        getSupportActionBar().setTitle(R.string.tt_multimedia);
         tv_texto = findViewById(R.id.tv_texto);
         enviar = findViewById(R.id.enviar);
         microfono = findViewById(R.id.ic_mic);
@@ -72,6 +72,11 @@ public class Voz extends Principal {
                 }
             }
         });
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
     private void reconocimiento() {

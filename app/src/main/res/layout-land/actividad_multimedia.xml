@@ -47,6 +47,7 @@
                             android:layout_height="match_parent" />
                         <ImageButton
                             android:id="@+id/ic_rr"
+                            android:onClick="anterior"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:layout_toEndOf="@+id/ic_rrr"
@@ -73,6 +74,7 @@
                             android:id="@+id/ic_ff"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
+                            android:onClick="siguiente"
                             android:layout_centerInParent="true"
                             android:background="@drawable/ic_ff" />
                         <View
@@ -103,6 +105,25 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/rectangulo"
                 android:elevation="2dp">
+
+                <Button
+                    android:id="@+id/voldown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:onClick="menosvoz"
+                    android:text="Menos" />
+
+                <Button
+                    android:id="@+id/volup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:onClick="masvoz"
+                    android:text="Más" />
+
             </RelativeLayout>
         </LinearLayout>
 

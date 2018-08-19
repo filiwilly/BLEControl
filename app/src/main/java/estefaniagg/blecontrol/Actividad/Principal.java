@@ -113,17 +113,30 @@ public class Principal extends AppCompatActivity {
                 return;
             case 2:
                 if (resultCode == -2) {
+                    conectado=false;
+                    Toast.makeText(getApplicationContext(), "DESCONECTADO", Toast.LENGTH_SHORT).show();
                     mBluetoothLeService.disconnect();
                     invalidateOptionsMenu();
                 }
                 return;
             case 3:
                 if (resultCode == -3) {
+                    conectado=false;
+                    Toast.makeText(getApplicationContext(), "DESCONECTADO", Toast.LENGTH_SHORT).show();
                     mBluetoothLeService.disconnect();
                     invalidateOptionsMenu();
                 }
             case 4:
                 if (resultCode == -4) {
+                    conectado=false;
+                    Toast.makeText(getApplicationContext(), "DESCONECTADO", Toast.LENGTH_SHORT).show();
+                    mBluetoothLeService.disconnect();
+                    invalidateOptionsMenu();
+                }
+            case 5:
+                if (resultCode == -5) {
+                    conectado=false;
+                    Toast.makeText(getApplicationContext(), "DESCONECTADO", Toast.LENGTH_SHORT).show();
                     mBluetoothLeService.disconnect();
                     invalidateOptionsMenu();
                 }

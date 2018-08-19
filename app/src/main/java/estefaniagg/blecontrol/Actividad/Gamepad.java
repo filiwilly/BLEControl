@@ -2,6 +2,10 @@ package estefaniagg.blecontrol.Actividad;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,8 +24,33 @@ public class Gamepad extends Principal {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actividad_gamepad);
         getSupportActionBar().setTitle(R.string.tt_gamepad);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+        //Sensor giroscopio
+        SensorManager sensorManager =
+                (SensorManager) getSystemService(SENSOR_SERVICE);
+        Sensor gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+        // Create a listener
+        SensorEventListener gyroscopeSensorListener = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent sensorEvent) {
+                if(sensorEvent.values[2] > 0.5f) { // anticlockwise
+
+                } else if(sensorEvent.values[2] < -0.5f) { // clockwise
+
+                }
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int i) {
+            }
+        };
+
+// Register the listener
+        sensorManager.registerListener(gyroscopeSensorListener,
+                gyroscopeSensor, SensorManager.SENSOR_DELAY_NORMAL);
+
         //Botones de Dirección:
         Button b1 = (Button) this.findViewById(R.id.bup);
         Button b2 = (Button) this.findViewById(R.id.bup2);
@@ -209,6 +238,11 @@ public class Gamepad extends Principal {
                 return false;
             }
         });
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
     public void stpressed (View v){
