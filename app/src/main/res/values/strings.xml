@@ -22,4 +22,13 @@
     <string name="desc">Dispositivo Desconocido</string>
     <!-- Clase Voz -->
     <string name="enviar">Enviar</string>
+
+    <string-array name="apps_array">
+        <item>Spotify</item>
+        <item>Youtube</item>
+        <item>Netflix</item>
+        <item>VLC</item>
+        <item>Windows Media</item>
+        <item>Powerpoint</item>
+    </string-array>
 </resources>

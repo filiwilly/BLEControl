@@ -13,12 +13,19 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import estefaniagg.blecontrol.R;
 
 import static android.content.ContentValues.TAG;
 
 public class Gamepad extends Principal {
+    private boolean giroscopio = false;
+    SensorEventListener gyroscopeSensorListener;
+    SensorManager sensorManager;
+    Sensor gyroscopeSensor;
+    int contador;
+
     @SuppressLint("ClickableViewAccessibility")
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,22 +35,46 @@ public class Gamepad extends Principal {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         //Sensor giroscopio
-        SensorManager sensorManager =
+        sensorManager =
                 (SensorManager) getSystemService(SENSOR_SERVICE);
-        Sensor gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+        gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
         // Create a listener
-        SensorEventListener gyroscopeSensorListener = new SensorEventListener() {
+        gyroscopeSensorListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
-                if(sensorEvent.values[2] > 0.5f) { // anticlockwise
-
-                } else if(sensorEvent.values[2] < -0.5f) { // clockwise
-
+                Log.d(TAG, "SensorChanged");
+                if (giroscopio) {
+                    if (sensorEvent.values[2] > 0.5f && contador != 2) { // anticlockwise
+                        Log.d(TAG, "Sensor Anti");
+                        if(contador==-2){
+                            mBluetoothLeService.WriteValue("2" + "14" + "215");
+                        }
+                        mBluetoothLeService.WriteValue("2" + "13" + "216");
+                        contador++;
+                        try {
+                            Thread.sleep(250);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    } else if (sensorEvent.values[2] < -0.5f && contador != -2) { // clockwise
+                        Log.d(TAG, "Sensor hori");
+                        if (contador==2){
+                            mBluetoothLeService.WriteValue("2" + "14" + "216");
+                        }
+                        mBluetoothLeService.WriteValue("2" + "13" + "215");
+                        contador--;
+                        try {
+                            Thread.sleep(250);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             }
 
             @Override
             public void onAccuracyChanged(Sensor sensor, int i) {
+                Log.d(TAG, "AccuracyChanged");
             }
         };
 
@@ -66,16 +97,16 @@ public class Gamepad extends Principal {
         m1.setOnTouchListener(new View.OnTouchListener() { //Arriba-Izquierda
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"15"+"LU");
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    mBluetoothLeService.WriteValue("2" + "15" + "LU");
                     try {
-                        Thread.sleep(150);
+                        Thread.sleep(250);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"16"+"LU");
+                if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
+                    mBluetoothLeService.WriteValue("2" + "16" + "LU");
                 }
                 return false;
             }
@@ -84,16 +115,16 @@ public class Gamepad extends Principal {
         m2.setOnTouchListener(new View.OnTouchListener() { //Arriba-Derecha
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"17"+"RU");
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    mBluetoothLeService.WriteValue("2" + "17" + "RU");
                     try {
-                        Thread.sleep(150);
+                        Thread.sleep(250);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"18"+"RU");
+                if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
+                    mBluetoothLeService.WriteValue("2" + "18" + "RU");
                 }
                 return false;
             }
@@ -101,16 +132,16 @@ public class Gamepad extends Principal {
         m3.setOnTouchListener(new View.OnTouchListener() { //Abajo-Izquierda
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"19"+"LD");
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    mBluetoothLeService.WriteValue("2" + "19" + "LD");
                     try {
-                        Thread.sleep(150);
+                        Thread.sleep(250);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"20"+"LD");
+                if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
+                    mBluetoothLeService.WriteValue("2" + "20" + "LD");
                 }
                 return false;
             }
@@ -118,16 +149,16 @@ public class Gamepad extends Principal {
         m4.setOnTouchListener(new View.OnTouchListener() { //Abajo-Derecha
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"21"+"RD");
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    mBluetoothLeService.WriteValue("2" + "21" + "RD");
                     try {
-                        Thread.sleep(150);
+                        Thread.sleep(250);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"22"+"RD");
+                if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
+                    mBluetoothLeService.WriteValue("2" + "22" + "RD");
                 }
                 return false;
             }
@@ -136,16 +167,16 @@ public class Gamepad extends Principal {
         b4.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"13"+"KEY_DOWN_ARROW");
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    mBluetoothLeService.WriteValue("2" + "13" + "217");
                     try {
-                        Thread.sleep(150);
+                        Thread.sleep(250);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"14"+"KEY_DOWN_ARROW");
+                if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
+                    mBluetoothLeService.WriteValue("2" + "14" + "217");
                 }
                 return false;
             }
@@ -154,16 +185,16 @@ public class Gamepad extends Principal {
         b3.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"13"+"KEY_RIGHT_ARROW");
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    mBluetoothLeService.WriteValue("2" + "13" + "215");
                     try {
-                        Thread.sleep(150);
+                        Thread.sleep(250);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"14"+"KEY_RIGHT_ARROW");
+                if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
+                    mBluetoothLeService.WriteValue("2" + "14" + "215");
                 }
                 return false;
             }
@@ -171,16 +202,16 @@ public class Gamepad extends Principal {
         b2.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"13"+"KEY_LEFT_ARROW");
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    mBluetoothLeService.WriteValue("2" + "13" + "216");
                     try {
-                        Thread.sleep(150);
+                        Thread.sleep(250);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"14"+"KEY_LEFT_ARROW");
+                if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
+                    mBluetoothLeService.WriteValue("2" + "14" + "216");
                 }
                 return false;
             }
@@ -188,16 +219,16 @@ public class Gamepad extends Principal {
         b1.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"13"+"KEY_UP_ARROW");
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    mBluetoothLeService.WriteValue("2" + "13" + "218");
                     try {
-                        Thread.sleep(150);
+                        Thread.sleep(250);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"14"+"KEY_UP_ARROW");
+                if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
+                    mBluetoothLeService.WriteValue("2" + "14" + "218");
                 }
                 return false;
             }
@@ -205,16 +236,16 @@ public class Gamepad extends Principal {
         b5.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"11"+"k");
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    mBluetoothLeService.WriteValue("2" + "11" + "k");
                     try {
                         Thread.sleep(75);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL){
-                    mBluetoothLeService.WriteValue("2"+"12"+"k");
+                if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
+                    mBluetoothLeService.WriteValue("2" + "12" + "k");
                 }
                 return false;
             }
@@ -222,51 +253,64 @@ public class Gamepad extends Principal {
         b6.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                Log.d(TAG,"Action"+event.getAction());
-                if (event.getAction()==MotionEvent.ACTION_DOWN){
-                    mBluetoothLeService.WriteValue("2"+"11"+"l");
+                Log.d(TAG, "Action" + event.getAction());
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    mBluetoothLeService.WriteValue("2" + "11" + "l");
                     try {
                         Thread.sleep(75);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                if(event.getAction()==MotionEvent.ACTION_UP || event.getAction()==MotionEvent.ACTION_CANCEL
-                        || event.getAction()==MotionEvent.ACTION_POINTER_UP){
-                    mBluetoothLeService.WriteValue("2"+"12"+"l");
+                if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL
+                        || event.getAction() == MotionEvent.ACTION_POINTER_UP) {
+                    mBluetoothLeService.WriteValue("2" + "12" + "l");
                 }
                 return false;
             }
         });
     }
+
     @Override
-    public boolean onSupportNavigateUp(){
+    public boolean onSupportNavigateUp() {
         finish();
         return true;
     }
 
-    public void stpressed (View v){
-        mBluetoothLeService.WriteValue("2"+"13"+"KEY_RETURN");
+    public void stpressed(View v) {
+        mBluetoothLeService.WriteValue("2" + "13" + "KEY_RETURN");
         try {
-            Thread.sleep(150);
+            Thread.sleep(250);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        mBluetoothLeService.WriteValue("2"+"14"+"KEY_RETURN");
+        mBluetoothLeService.WriteValue("2" + "14" + "KEY_RETURN");
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_actividades, menu);
+        getMenuInflater().inflate(R.menu.menu_gamepad, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
+            case R.id.giroscopio:
+                if (giroscopio == false) { //Se activa
+                    giroscopio = true;
+                    sensorManager.registerListener(gyroscopeSensorListener,
+                            gyroscopeSensor, SensorManager.SENSOR_DELAY_NORMAL);
+                    Toast.makeText(getApplicationContext(), "Giroscopio Activado", Toast.LENGTH_SHORT).show();
+                } else { //Se desactiva
+                    giroscopio = false;
+                    sensorManager.unregisterListener(gyroscopeSensorListener);
+                    Toast.makeText(getApplicationContext(), "Giroscopio Desactivado", Toast.LENGTH_SHORT).show();
+                }
+                return true;
             case R.id.desconexion:
                 final Intent intent = new Intent(this, Principal.class);
-                Gamepad.this.setResult(-3,intent);
+                Gamepad.this.setResult(-3, intent);
                 Gamepad.this.finish();
                 return true;
         }

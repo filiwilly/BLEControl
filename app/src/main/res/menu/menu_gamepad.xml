@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/giros"
+        android:id="@+id/giroscopio"
         android:title="Giroscopio"
         android:icon="@drawable/giroscopio"
         app:showAsAction="always"

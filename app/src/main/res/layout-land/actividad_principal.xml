@@ -26,10 +26,10 @@
             android:id="@+id/ic_lupa"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:background="@drawable/ic_lupa"
-            android:layout_marginTop="12dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="3dp"
-            android:layout_centerHorizontal="true"/>
+            android:layout_marginTop="12dp"
+            android:background="@drawable/ic_lupa" />
     </RelativeLayout>
 
     <LinearLayout
@@ -115,7 +115,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp">
+                    android:layout_height="40dp"
+                    android:layout_weight="2">
 
                     <View
                         android:layout_width="fill_parent"
@@ -125,7 +126,7 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="40dp">
+                        android:layout_height="match_parent">
 
                         <TextView
                             android:id="@+id/tv_multimedia"
@@ -169,7 +170,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp">
+                    android:layout_height="40dp"
+                    android:layout_weight="2">
 
                     <View
                         android:layout_width="fill_parent"
@@ -179,7 +181,7 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="40dp">
+                        android:layout_height="match_parent">
 
                         <TextView
                             android:id="@+id/tv_gamepad"
@@ -223,7 +225,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp">
+                    android:layout_height="40dp"
+                    android:layout_weight="2">
 
                     <View
                         android:layout_width="fill_parent"
@@ -233,7 +236,7 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="40dp">
+                        android:layout_height="match_parent">
 
                         <TextView
                             android:id="@+id/tv_voz"
@@ -277,7 +280,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp">
+                    android:layout_height="40dp"
+                    android:layout_weight="2">
 
                     <View
                         android:layout_width="fill_parent"
@@ -287,7 +291,7 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="40dp">
+                        android:layout_height="match_parent">
 
                         <TextView
                             android:id="@+id/tv_teclado"

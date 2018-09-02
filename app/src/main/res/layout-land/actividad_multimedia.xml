@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/fondoprincipal">
+    android:background="@color/fondoprincipal"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,17 +41,20 @@
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:layout_centerInParent="true"
+                            android:onClick="primera"
                             android:background="@drawable/ic_rrr" />
+
                         <View
                             android:layout_width="20dp"
                             android:layout_height="match_parent" />
+
                         <ImageButton
                             android:id="@+id/ic_rr"
-                            android:onClick="anterior"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:layout_toEndOf="@+id/ic_rrr"
-                            android:background="@drawable/ic_rr" />
+                            android:background="@drawable/ic_rr"
+                            android:onClick="anterior" />
                     </LinearLayout>
                 </RelativeLayout>
 
@@ -59,32 +62,38 @@
                     android:id="@+id/ic_plpa"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:onClick="PLPA"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/ic_plpa" />
+                    android:background="@drawable/ic_plpa"
+                    android:onClick="PLPA" />
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true">
+
                         <ImageButton
                             android:id="@+id/ic_ff"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:onClick="siguiente"
                             android:layout_centerInParent="true"
-                            android:background="@drawable/ic_ff" />
+                            android:background="@drawable/ic_ff"
+                            android:onClick="siguiente" />
+
                         <View
                             android:layout_width="20dp"
                             android:layout_height="match_parent" />
+
                         <ImageButton
                             android:id="@+id/ic_fff"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:layout_toEndOf="@+id/ic_rrr"
+                            android:onClick="ultima"
                             android:background="@drawable/ic_fff" />
                     </LinearLayout>
                 </RelativeLayout>
@@ -100,31 +109,68 @@
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
             android:paddingTop="25dp">
-            <RelativeLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/rectangulo"
                 android:elevation="2dp">
 
-                <Button
-                    android:id="@+id/voldown"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:onClick="menosvoz"
-                    android:text="Menos" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:layout_marginLeft="40dp">
 
-                <Button
-                    android:id="@+id/volup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:onClick="masvoz"
-                    android:text="Más" />
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textAlignment="center"
+                        android:textColor="@color/primaryDarkColor"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:backgroundTint="@color/secondaryColor"></Spinner>
+                </RelativeLayout>
 
-            </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:layout_marginRight="40dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true">
+
+                        <ImageButton
+                            android:id="@+id/voldown"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/volbajar"
+                            android:onClick="menosvoz"
+                            android:text="Menos" />
+
+                        <View
+                            android:layout_width="30dp"
+                            android:layout_height="50dp"></View>
+
+                        <ImageButton
+                            android:id="@+id/volup"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/volsubir"
+                            android:onClick="masvoz"
+                            android:text="Más" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

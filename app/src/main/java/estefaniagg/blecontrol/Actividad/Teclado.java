@@ -11,14 +11,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import estefaniagg.blecontrol.Data.Teclas;
 import estefaniagg.blecontrol.R;
 
-import static android.content.ContentValues.TAG;
 
 public class Teclado extends Principal {
     boolean teclado = false;
+    boolean pizarra = false;
     float x1, x2;
     float y1, y2;
     float distx = 0, disty = 0;
@@ -31,7 +32,6 @@ public class Teclado extends Principal {
         getSupportActionBar().setTitle(R.string.tt_teclado);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         RelativeLayout Area = (RelativeLayout) findViewById(R.id.l2);
-        //TODO: modo dibujo
         //TOUCHPAD
         Area.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -57,8 +57,7 @@ public class Teclado extends Principal {
                         x2 = x1;
                         y2 = y1;
                         if (conectado) {
-                            Log.d(TAG, distx+" "+disty);
-                            mBluetoothLeService.WriteValue("5" + Math.round(distx) + ";" + Math.round(disty));
+                            mBluetoothLeService.WriteValue("5" + "1" + Math.round(distx) + ";" + Math.round(disty));
                         }
                         break;
                 }
@@ -68,35 +67,38 @@ public class Teclado extends Principal {
     }
 
     @Override
-    public boolean onSupportNavigateUp(){
+    public boolean onSupportNavigateUp() {
         finish();
         return true;
     }
 
-    public void clickizq(View view){
-        if (conectado){
+    public void clickizq(View view) {
+        if (conectado) {
             mBluetoothLeService.WriteValue("6" + "LEFT");
         }
     }
-    public void clickder(View view){
-        if (conectado){
+
+    public void clickder(View view) {
+        if (conectado) {
             mBluetoothLeService.WriteValue("6" + "RIGHT");
         }
     }
-    public void arriba(View view){
-        if (conectado){
+
+    public void arriba(View view) {
+        if (conectado) {
             mBluetoothLeService.WriteValue("7" + "1");
         }
     }
-    public void abajo(View view){
-        if (conectado){
+
+    public void abajo(View view) {
+        if (conectado) {
             mBluetoothLeService.WriteValue("7" + "-1");
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_actividades, menu);
+        getMenuInflater().inflate(R.menu.menu_tecladoraton, menu);
         return true;
     }
 
@@ -125,6 +127,17 @@ public class Teclado extends Principal {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.pizarra:
+                if (pizarra == false) { //Se activa
+                    pizarra = true;
+                    Toast.makeText(getApplicationContext(), "Pizarra Activada", Toast.LENGTH_SHORT).show();
+                    mBluetoothLeService.WriteValue("5" + "2" + "aa");
+                } else { //Se desactiva
+                    pizarra = false;
+                    Toast.makeText(getApplicationContext(), "Pizarra Desactivado", Toast.LENGTH_SHORT).show();
+                    mBluetoothLeService.WriteValue("5" + "3" + "aa");
+                }
+                return true;
             case R.id.desconexion:
                 final Intent intent = new Intent(this, Principal.class);
                 Teclado.this.setResult(-5, intent);

@@ -24,6 +24,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import estefaniagg.blecontrol.Data.Dispositivo;
 import estefaniagg.blecontrol.Data.Util;
 import estefaniagg.blecontrol.R;
@@ -77,7 +78,7 @@ public class Principal extends AppCompatActivity {
                 Log.d(TAG, "Solo Gatt");
             } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
                 if (!nombreact.equals("Principal")) {
-                    destruir=true;
+                    destruir = true;
                     finish();
                 }
                 conectado = false;
@@ -105,15 +106,15 @@ public class Principal extends AppCompatActivity {
         switch (requestCode) {
             case 1: //Resultado de petición de activación BT
                 if (resultCode == RESULT_CANCELED) { //No se autoriza la activación
-                    Toast t = Toast.makeText(this,"Active el Bluetooth para utilizar" +
-                            "esta aplicación",Toast.LENGTH_LONG);
+                    Toast t = Toast.makeText(this, "Active el Bluetooth para utilizar" +
+                            "esta aplicación", Toast.LENGTH_LONG);
                     t.show();
                     return;
                 }
                 return;
             case 2:
                 if (resultCode == -2) {
-                    conectado=false;
+                    conectado = false;
                     Toast.makeText(getApplicationContext(), "DESCONECTADO", Toast.LENGTH_SHORT).show();
                     mBluetoothLeService.disconnect();
                     invalidateOptionsMenu();
@@ -121,21 +122,21 @@ public class Principal extends AppCompatActivity {
                 return;
             case 3:
                 if (resultCode == -3) {
-                    conectado=false;
+                    conectado = false;
                     Toast.makeText(getApplicationContext(), "DESCONECTADO", Toast.LENGTH_SHORT).show();
                     mBluetoothLeService.disconnect();
                     invalidateOptionsMenu();
                 }
             case 4:
                 if (resultCode == -4) {
-                    conectado=false;
+                    conectado = false;
                     Toast.makeText(getApplicationContext(), "DESCONECTADO", Toast.LENGTH_SHORT).show();
                     mBluetoothLeService.disconnect();
                     invalidateOptionsMenu();
                 }
             case 5:
                 if (resultCode == -5) {
-                    conectado=false;
+                    conectado = false;
                     Toast.makeText(getApplicationContext(), "DESCONECTADO", Toast.LENGTH_SHORT).show();
                     mBluetoothLeService.disconnect();
                     invalidateOptionsMenu();
@@ -191,13 +192,16 @@ public class Principal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actividad_principal);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ImageButton iconolupa = (ImageButton) findViewById(R.id.ic_lupa);
         iconolupa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 android.app.FragmentManager fragmentManager = getFragmentManager();
                 Escanear fragmento = new Escanear();
-                fragmento.show(fragmentManager,"Dialogo Escanear");
+                fragmento.show(fragmentManager, "Dialogo Escanear");
             }
         });
 
@@ -222,10 +226,10 @@ public class Principal extends AppCompatActivity {
         bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
     }
 
-    public static void RecibeDispo (Dispositivo dispositivo){
-        dispositivo_conectado=dispositivo;
-        mNombreDispo=dispositivo_conectado.getName();
-        mDirecDispo=dispositivo_conectado.getAddress();
+    public static void RecibeDispo(Dispositivo dispositivo) {
+        dispositivo_conectado = dispositivo;
+        mNombreDispo = dispositivo_conectado.getName();
+        mDirecDispo = dispositivo_conectado.getAddress();
     }
 
     private class LocalBroadcastReceiver extends BroadcastReceiver {
@@ -256,7 +260,7 @@ public class Principal extends AppCompatActivity {
                 menu.findItem(R.id.desconexion).setVisible(false);
                 iconoble.setImageResource(R.drawable.im_logogris);
                 tvDispo.setText(mNombreDispo);
-                destruir=false;
+                destruir = false;
             }
         } else {
             //Escanear -- Desconectado y sin dispositivo
@@ -277,7 +281,7 @@ public class Principal extends AppCompatActivity {
                 tvDispo.setText("Conectando...");
                 im_cargando.startAnimation(animacion);
                 im_cargando.setVisibility(View.VISIBLE);
-                Log.d(TAG,mDirecDispo+mBluetoothLeService);
+                Log.d(TAG, mDirecDispo + mBluetoothLeService);
                 mBluetoothLeService.connect(mDirecDispo);
                 return true;
         }
@@ -288,7 +292,7 @@ public class Principal extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(TAG,"OnResume");
+        Log.d(TAG, "OnResume");
         registerReceiver(mGattUpdateReceiver, Util.makeGattUpdateIntentFilter());
         nombreact = this.getClass().getSimpleName();
         invalidateOptionsMenu();
@@ -304,7 +308,7 @@ public class Principal extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(TAG,"OnPause");
+        Log.d(TAG, "OnPause");
         unregisterReceiver(mGattUpdateReceiver);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(
                 localBroadcastReceiver);
@@ -313,8 +317,8 @@ public class Principal extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d(TAG,"OnStop");
-        if(destruir){
+        Log.d(TAG, "OnStop");
+        if (destruir) {
             invalidateOptionsMenu();
         }
     }
@@ -322,7 +326,7 @@ public class Principal extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(TAG,"OnDestroy");
+        Log.d(TAG, "OnDestroy");
         unbindService(mServiceConnection);
         mBluetoothLeService = null;
     }

@@ -4,7 +4,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,14 +11,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
-
 import estefaniagg.blecontrol.Data.Util;
 import estefaniagg.blecontrol.R;
-import estefaniagg.blecontrol.Servicio.BluetoothLeService;
 
 import static android.content.ContentValues.TAG;
 
@@ -30,12 +26,16 @@ public class Voz extends Principal {
     private String mDirecDispo;
     private ImageButton microfono;
     private ArrayList<String> lectura = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actividad_voz);
         getSupportActionBar().setTitle(R.string.tt_voz);
         getSupportActionBar().setTitle(R.string.tt_multimedia);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         tv_texto = findViewById(R.id.tv_texto);
         enviar = findViewById(R.id.enviar);
         microfono = findViewById(R.id.ic_mic);
@@ -55,14 +55,16 @@ public class Voz extends Principal {
                 if (lectura != null && conectado) {
                     int tam = lectura.get(0).length();
                     byte[] bytes = lectura.get(0).getBytes();
-                    int paquetetam = (int) Math.ceil( bytes.length / (double)19);
-                    for (int i=0; i<paquetetam; i++){
-                        int x = i*19;
-                        int y = (i+1)*19;
-                        if(y>bytes.length){ y=bytes.length;}
-                        byte [] dividido = Arrays.copyOfRange(bytes,x,y);
+                    int paquetetam = (int) Math.ceil(bytes.length / (double) 19);
+                    for (int i = 0; i < paquetetam; i++) {
+                        int x = i * 19;
+                        int y = (i + 1) * 19;
+                        if (y > bytes.length) {
+                            y = bytes.length;
+                        }
+                        byte[] dividido = Arrays.copyOfRange(bytes, x, y);
                         String valor = new String(dividido);
-                        mBluetoothLeService.WriteValue("3"+valor);
+                        mBluetoothLeService.WriteValue("3" + valor);
                         try {
                             Thread.sleep(300);
                         } catch (InterruptedException e) {
@@ -73,8 +75,9 @@ public class Voz extends Principal {
             }
         });
     }
+
     @Override
-    public boolean onSupportNavigateUp(){
+    public boolean onSupportNavigateUp() {
         finish();
         return true;
     }
