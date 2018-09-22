@@ -25,7 +25,7 @@ import estefaniagg.blecontrol.R;
 
 import static android.content.ContentValues.TAG;
 
-public class Escanear extends DialogFragment{
+public class Escanear extends DialogFragment {
 
     private Button b_escaneo;
     private boolean escaneando;
@@ -40,9 +40,9 @@ public class Escanear extends DialogFragment{
     }
 
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState){
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
-        if(dialog.getWindow() != null) {
+        if (dialog.getWindow() != null) {
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color
                     .TRANSPARENT));
@@ -69,12 +69,12 @@ public class Escanear extends DialogFragment{
                         new Intent("Registrar Dispositivo"));
                 if (escaneando) {
                     Principal.mBluetoothAdapter.stopLeScan(mLeScanCallback);
-                    escaneando=false;
+                    escaneando = false;
                 }
                 dismiss();
             }
         });
-        b_escaneo=(Button)v.findViewById(R.id.b_escaneo);
+        b_escaneo = (Button) v.findViewById(R.id.b_escaneo);
         b_escaneo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +90,7 @@ public class Escanear extends DialogFragment{
         return v;
     }
 
-    private void onclick(){
+    private void onclick() {
 
     }
 
@@ -114,20 +114,22 @@ public class Escanear extends DialogFragment{
             b_escaneo.setText(R.string.escanear); //Cambia texto del botón a "Escanear"
         }
     }
+
     private BluetoothAdapter.LeScanCallback mLeScanCallback =
             new BluetoothAdapter.LeScanCallback() {
                 @Override
                 public void onLeScan(final BluetoothDevice device, final int rssi, byte[] scanRecord) {
-                    Log.d(TAG, "Escanear"+rssi);
+                    Log.d(TAG, "Escanear" + rssi);
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            adaptador.addDispo(device,rssi);
+                            adaptador.addDispo(device, rssi);
                             adaptador.notifyDataSetChanged();
                         }
                     });
                 }
             };
+
     @Override
     public void onResume() {
         super.onResume();
